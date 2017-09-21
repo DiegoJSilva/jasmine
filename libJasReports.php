@@ -136,6 +136,35 @@
     }
   }
 
+  function jas_getPrinterTotalPagesMonth($printerName, $dateStart, $dateEnd){
+    if (!$printerName){
+      $source="jas_getPrinterTotalPages";
+      $message="Missing printerName !";
+      $hint="Please specify \$printerName for this function.";
+      ER_Handler::getInstance()->logCrit($source, $message, $hint);
+      return false;
+    }
+    // Clean the input variable
+    $printerName=DB_escape_string($printerName, true);
+    $query="SELECT SUM(copies*pages) as total FROM jobs_log WHERE printer='$printerName'";
+    $query="SELECT *, DATE_FORMAT(date, '%d/%c/%Y %H:%i:%s') AS date FROM jobs_log WHERE printer='$printerName' AND DATE(date) BETWEEN '$dateStart' AND '$dateEnd';"
+    if ($result=DB_query($query)){ //Assignment !
+      $row=mysql_fetch_row($result);
+      mysql_free_result($result);
+      if (!empty($row[0]))
+        return $row[0];
+      else
+        return false;
+    }
+    else{
+      $source="jas_getPrinterTotalPages";
+      $message="Query failed !";
+      $hint="Check for the query syntax, and that the MySQL host is up.";
+      ER_Handler::getInstance()->logCrit($source, $message, $hint);
+      return false;
+    }
+  }
+
   /* jas_getServerTotalPages: Returns the total number of pages for
       a given server, as an integer, for all jobs on all printers
       served by this machine. */
@@ -518,7 +547,7 @@
       case "server":
         $queryField="server";
         break;
-      default: 
+      default:
         $queryField="user";
     }
 
