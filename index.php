@@ -2,6 +2,7 @@
 /* JASmine, print accounting system for Cups.
  Copyright (C) Nayco.
 
+
  (Please read the COPYING file)
 
  This program is free software; you can redistribute it and/or
