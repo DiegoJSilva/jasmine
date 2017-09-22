@@ -32,7 +32,7 @@ a:link, a:visited {
   color: #666666;
 }
 a:hover, a:active {
-  color: #66CC99;
+  color: #1a34c9;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -48,7 +48,7 @@ input {
   padding:2px;
 }
 input:hover, input:focus {
-  border: 1px solid #66CC99;
+  border: 1px solid #1a34c9;
 }
 fieldset {
   margin: 1em 0 1em 0;
@@ -100,7 +100,7 @@ div.menu > ul span {
   color: #666666;
 }
 div.menu > ul li:hover span {
-  background: #66CC99;
+  background: #1a34c9;
   color: #FFFFFF;
 }
 div.menu > ul li ul {
@@ -132,7 +132,7 @@ div.menu a:link, div.menu a:visited, div.menu a:active {
 }
 div.menu a:hover {
   color: #FFFFFF;
-  background: #66CC99;
+  background: #1a34c9;
 }
 
 /* Auth box */
@@ -160,7 +160,7 @@ div.report_page h2 {
 
 /* Tables */
 table{
-  border: solid 1px #66CC99;
+  border: solid 1px #1a34c9;
   margin-left: auto;
   margin-right: auto;
   width: 85%;
@@ -172,19 +172,19 @@ table a:link, table a:visited {
   padding: 2px;
 }
 table a:active, table a:hover {
-  color: #66CC99;
+  color: #1a34c9;
 }
 caption{
   font-size: 80%;
   padding-top: 0.5em;
   margin-left: auto;
   margin-right: auto;
-  caption-side: bottom; 
+  caption-side: bottom;
   text-align: right;
 }
 th {
   border: 1px solid #FFFFFF;
-  background: #66CC99;
+  background: #1a34c9;
   color: #FFFFFF;
   padding: 2px;
   padding-left: 10px;

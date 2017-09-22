@@ -21,7 +21,7 @@
   // config.php: global variables and parameters.
 
   // Various vars
-  $DEFAULT_STARTPAGE="summary";
+  $DEFAULT_STARTPAGE="main";
 
   // Database vars
   $DB_host="localhost";
