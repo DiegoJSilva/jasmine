@@ -19,8 +19,8 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA. */
 
   /* Menu.php: Displays the main menu */
-
-
+       
+       
 ?>    <div class="menu">
       <h2>Menu</h2>
       <ul>
@@ -28,7 +28,7 @@
 	  <span title="Main section">Main</span>
           <ul>
             <li>
-              <a href="main.php" title="Display the main page">Main page</a>
+              <a href="index.php" title="Display the main page">Main page</a>
             </li>
 	    <li>
 	      <a href="index.php?section=help" title="Get some help using JASmine">Help</a>
