@@ -32,7 +32,7 @@ a:link, a:visited {
   color: #666666;
 }
 a:hover, a:active {
-  color: #66CC99;
+  color: #1A34C9;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -109,7 +109,7 @@ div.report_page h2 {
 
 /* Tables */
 table{
-  border: solid 1px #66CC99;
+  border: solid 1px #1A34C9;
   margin-left: 25px;
   font-size: 100%;
   border-collapse: collapse;
@@ -119,25 +119,25 @@ table a:link, table a:visited {
   display: block;
 }
 table a:active, table a:hover {
-  color: #66CC99;
+  color: #1A34C9;
 }
 caption{
   font-size: 80%;
   margin-left: 50px;
-  caption-side: bottom; 
+  caption-side: bottom;
   width: auto;
   text-align: left;
   padding-left: 1em;
 }
 th {
   border: 1px solid #FFFFFF;
-  background: #66CC99;
+  background: #1A34C9;
   color: #FFFFFF;
   padding-left: 10px;
   padding-right: 10px;
 }
 td {
-  border: solid 1px #66CC99;
+  border: solid 1px #1A34C9;
   text-align: left;
   padding: 0.2em 1em 0.2em 1em;
 }

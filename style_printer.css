@@ -76,22 +76,22 @@ div.report_page p{
   padding-left: 25px;
 }
 table{
-  border: solid 1px #66CC99;
+  border: solid 1px #1A34C9;
   margin-left: auto;
   margin-right: auto;
   width: 75%;
-  border-collapse: collapse; 
+  border-collapse: collapse;
 }
 caption{
   font-size: 80%;
   margin-left: 50px;
-  caption-side: bottom; 
+  caption-side: bottom;
   width: auto;
   text-align: left;
   padding-left: 1em;
 }
 th {
-  border: 1px solid #66CC99;
+  border: 1px solid #1A34C9;
   background: #66CC99;
   color: #FFFFFF;
   width: 1em;
@@ -103,7 +103,7 @@ th + th{
   width: auto;
 }
 td {
-  border: solid 1px #66CC99;
+  border: solid 1px #1A34C9;
   text-align: left;
   padding: 2px;
   padding-left: 5px;
