@@ -28,7 +28,7 @@
 	  <span title="Main section">Main</span>
           <ul>
             <li>
-              <a href="main.php" title="Display the main page">Main page</a>
+              <a href="index.php?section=main" title="Display the main page">Main page</a>
             </li>
 	    <li>
 	      <a href="index.php?section=help" title="Get some help using JASmine">Help</a>
