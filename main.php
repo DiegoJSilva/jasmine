@@ -6,7 +6,7 @@
   DB_connect($DB_host,$DB_login,$DB_pass);
   DB_select($DB_db);
 
-  $top10Users=jas_getUserRankingsMonth(10);
+  $top10Users=jas_getUserRankings(10);
   $top5Printers=jas_getPrinterRankings(5);
   $top5Servers=jas_getServerRankings(5)
 
