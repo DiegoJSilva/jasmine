@@ -319,6 +319,58 @@
       return false;
     }
   }
+//Teste Ranking por mês
+  function jas_getUserRankingsMonth($count, $threshold=0, $printerName="", $dpt=""){
+     if (!$count){
+      $source="jas_getUserRankingsMonth";
+      $message="Missing number of results to return !";
+      $hint="Please specify \$count for this function.";
+      ER_Handler::getInstance()->logCrit($source, $message, $hint);
+      return false;
+    }
+    // Clean the input variables and prepare query
+    $count=DB_escape_string($count, true);
+    $threshold=($threshold)?DB_escape_string($threshold, true):0;
+    $printerName=($printerName)?DB_escape_string($printerName, true):0;
+    $dpt=($dpt)?DB_escape_string($dpt, true):0;
+
+    // Build the query
+    $query="SELECT date,user,SUM(copies*pages) from jobs_log where date_format(current_date, '%Y-%m') = date_format(date, '%Y-%m');"
+    $query.=($printerName)?"WHERE printer=$printerName ":"";
+    // For $dpt, let's give up for now, we need to manage user groups...
+    // That'll be in a later version :P !
+    $query.="GROUP BY user ";
+    $query.=($threshold)?"HAVING total => $threshold ":"";
+    $query.="ORDER BY total DESC LIMIT $count";
+
+    if($result=DB_query($query)){ //Assignment !
+      //return DB_Dump_Result($result);
+
+      $tableUR=new TBL_table();
+      $tableUR->setCaption("User rankings of the month");
+      $tableUR->setColumns(array('user', 'total'));
+
+      global $jas_userStatsPage;
+
+      while ($row=mysql_fetch_assoc($result)){
+        if (isset($jas_userStatsPage))
+          $row['user']="<a href=\"".$jas_userStatsPage.$row['user']."\">".$row['user']."</a>";
+        $tableUR->addRow($row);
+      }
+
+      mysql_free_result($result);
+      return $tableUR->displayTable('20');
+    }
+    else{
+      $source="jas_getUserRankings";
+      $message="Query failed !";
+      $hint="Check for the query syntax, and that the MySQL host is up.";
+      ER_Handler::getInstance()->logCrit($source, $message, $hint);
+      return false;
+    }
+  }
+
+  /* Fim Teste Ranking mês
 
   /* jas_getUserRankings: Returns an associative array containing
      the $count most paper consuming users. Optionnaly, the results
@@ -518,7 +570,7 @@
       case "server":
         $queryField="server";
         break;
-      default: 
+      default:
         $queryField="user";
     }
 
