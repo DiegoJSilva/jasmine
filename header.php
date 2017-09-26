@@ -43,6 +43,6 @@
       <h1>JASmine</h1>
       <!--  &nbsp; &#12472;&#12515;&#12473;&#12511;&#12531;</h1> -->
       <p>
-        <img src="image/infra.png"/>
+        <img src="images/infra.png" width="115" height="25">
       </p>
     </div>
