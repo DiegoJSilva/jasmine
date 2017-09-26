@@ -23,7 +23,6 @@
     '11'=>'November',
     '12'=>'December'
   );
-  echo $month[date('m')];
 ?><!-- Begin Summary -->
 
 <h2>Summary of the <?php echo $month[date('m')] ?></h2>
