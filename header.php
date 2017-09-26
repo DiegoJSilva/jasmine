@@ -43,6 +43,6 @@
       <h1>JASmine</h1>
       <!--  &nbsp; &#12472;&#12515;&#12473;&#12511;&#12531;</h1> -->
       <p>
-        <em>Print accounting for CUPS</em>
+        <img src="image/infra.png"/>
       </p>
     </div>
