@@ -8,7 +8,7 @@
 
   $top10Users=jas_getUserRankingsMonth(10);
   $top5Printers=jas_getPrinterRankingsMonth(5);
-  $top5Servers=jas_getServerRankings(5);
+  $top5Servers=jas_getServerRankingsMonth(5);
   $month = array(
     '01'=>'January',
     '02'=>'February',
@@ -31,6 +31,6 @@
 <?=($top10Users)?$top10Users:"<p>An error occured, please check the error messages.</p>"?>
 <h3>Printers Top5 <?php echo $month[date('m')] ?></h3>
 <?=($top5Printers)?$top5Printers:"<p>An error occured, please check the error messages.</p>"?>
-<h3>Servers Top5 <?php echo $month[date('m')] ?></h3>
+<h3>Server <?php echo $month[date('m')] ?></h3>
 <?=($top5Servers)?$top5Servers:"<p>An error occured, please check the error messages.</p>"?>
 <!-- End Summary -->

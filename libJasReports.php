@@ -523,7 +523,48 @@
       return false;
     }
   }
+  /* Função Ranking Serve por mês, Diego*/
+  function jas_getServerRankingsMonth($count){
+    if (!$count){
+      $source="jas_getServerRankingsMonth";
+      $message="Missing number of results to return !";
+      $hint="Please specify \$count for this function.";
+      ER_Handler::getInstance()->logCrit($source, $message, $hint);
+      return false;
+    }
+    // Clean the input variables and prepare query
+    $count=DB_escape_string($count, true);
 
+    // Build the query
+    $query="SELECT server,SUM(copies*pages) as total from jobs_log where date_format(current_date, '%Y-%m') = date_format(date, '%Y-%m')";
+    $query.="GROUP BY server ORDER BY total DESC LIMIT $count";
+
+    if($result=DB_query($query)){ //Assignment !
+      //return DB_Dump_Result($result);
+
+      $tableSR=new TBL_table();
+      $tableSR->setCaption("server rankings");
+      $tableSR->setColumns(array('server', 'total'));
+
+      global $jas_serverStatsPage;
+
+      while ($row=mysql_fetch_assoc($result)){
+        if (isset($jas_serverStatsPage))
+          $row['server']="<a href=\"".$jas_serverStatsPage.$row['server']."\">".$row['server']."</a>";
+        $tableSR->addRow($row);
+      }
+
+      mysql_free_result($result);
+      return $tableSR->displayTable('20');
+    }
+    else{
+      $source="jas_getServerRankingsMonth";
+      $message="Query failed !";
+      $hint="Check for the query syntax, and that the MySQL host is up.";
+      ER_Handler::getInstance()->logCrit($source, $message, $hint);
+      return false;
+    }
+  }
   /* jas_getServerRankings: Returns an associative array containing
      the $count most used servers. */
   function jas_getServerRankings($count){
