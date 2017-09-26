@@ -319,7 +319,7 @@
       return false;
     }
   }
-  /* Teste nova função Diego */
+  /* Função Ranking de usuarios por mês, Diego */
   function jas_getUserRankingsMonth($count, $threshold=0, $printerName="", $dpt=""){
      if (!$count){
       $source="jas_getUserRankingsMonth";
@@ -417,6 +417,52 @@
     }
     else{
       $source="jas_getUserRankings";
+      $message="Query failed !";
+      $hint="Check for the query syntax, and that the MySQL host is up.";
+      ER_Handler::getInstance()->logCrit($source, $message, $hint);
+      return false;
+    }
+  }
+  /*Função Ranking Impressoras por mês, Diego*/
+  function jas_getPrinterRankingsMonth($count, $dpt=""){
+
+    if (!$count){
+      $source="jas_getPrinterRankingsMonth";
+      $message="Missing number of results to return !";
+      $hint="Please specify \$count for this function.";
+      ER_Handler::getInstance()->logCrit($source, $message, $hint);
+      return false;
+    }
+    // Clean the input variables and prepare query
+    $count=DB_escape_string($count, true);
+    $dpt=($dpt)?DB_escape_string($dpt, true):0;
+
+    // Build the query
+    $query="SELECT printer,SUM(copies*pages) as total from jobs_log where date_format(current_date, '%Y-%m') = date_format(date, '%Y-%m')";
+    // For $dpt, let's give up for now, we need to manage user groups...
+    // That'll be in a later version :P !
+    $query.="GROUP BY printer ORDER BY total DESC LIMIT $count";
+
+    if($result=DB_query($query)){ //Assignment !
+      //return DB_Dump_Result($result);
+
+      $tablePR=new TBL_table();
+      $tablePR->setCaption("Printer rankings");
+      $tablePR->setColumns(array('printer', 'total'));
+
+      global $jas_printerStatsPage;
+
+      while ($row=mysql_fetch_assoc($result)){
+        if (isset($jas_printerStatsPage))
+          $row['printer']="<a href=\"".$jas_printerStatsPage.$row['printer']."\">".$row['printer']."</a>";
+        $tablePR->addRow($row);
+      }
+
+      mysql_free_result($result);
+      return $tablePR->displayTable('20');
+    }
+    else{
+      $source="jas_getPrinterRankingsMonth";
       $message="Query failed !";
       $hint="Check for the query syntax, and that the MySQL host is up.";
       ER_Handler::getInstance()->logCrit($source, $message, $hint);

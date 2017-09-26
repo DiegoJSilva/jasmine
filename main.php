@@ -7,7 +7,7 @@
   DB_select($DB_db);
 
   $top10Users=jas_getUserRankingsMonth(10);
-  $top5Printers=jas_getPrinterRankings(5);
+  $top5Printers=jas_getPrinterRankingsMonth(5);
   $top5Servers=jas_getServerRankings(5);
   $month = array(
     '01'=>'January',
